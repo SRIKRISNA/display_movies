@@ -66,6 +66,7 @@ function Main() {
                 totalPosts = {movieData.length}
                 postsPerPage = {postsPerPage}
                 setCurrentPage={setCurPage}
+                curPage = {curPage}
             />
             {/* <div className="pagination">
                 <button onClick={Prev}>Prev</button>

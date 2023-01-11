@@ -97,20 +97,21 @@ nav ul li a{
 }
 
 /* pagination */
-.pagination {
+.pagination{
     display: flex;
     justify-content: center;
 }
-
-.pagination button {
-    margin: 5px;
-    padding: 10px;
-    border: none;
-    background-color: #800080;
+.pagination button{
+    background: rgb(0, 131, 7);
     color: white;
     cursor: pointer;
+    border: none;
+    padding: 8px;
+    margin: 3px;
 }
-
-.pagination button:hover {
-    background-color: black;
+.pagination button:hover{
+    background: black;
+}
+.pagination button.active{
+    background: black;
 }
