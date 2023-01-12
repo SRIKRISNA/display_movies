@@ -14,7 +14,7 @@ function Main() {
     // const [count, setCount] = useState(1);
 
     const [curPage, setCurPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(6);
+    const [postsPerPage, setPostsPerPage] = useState(12);
 
     const lastPostIndex = curPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
@@ -40,6 +40,7 @@ function Main() {
 
     return (
         <>
+            
             <div className="header">
                 <h3>MovieDb</h3>
 
@@ -62,11 +63,11 @@ function Main() {
                         })
                 }
             </div>
-            <Pagination 
-                totalPosts = {movieData.length}
-                postsPerPage = {postsPerPage}
+            <Pagination
+                totalPosts={movieData.length}
+                postsPerPage={postsPerPage}
                 setCurrentPage={setCurPage}
-                curPage = {curPage}
+                curPage={curPage}
             />
             {/* <div className="pagination">
                 <button onClick={Prev}>Prev</button>

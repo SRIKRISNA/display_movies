@@ -52,7 +52,7 @@ nav ul li a{
 
 .container{
     margin: auto;
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -71,8 +71,6 @@ nav ul li a{
 }
 .movie .poster{
     width: 100%;
-    height: 250px;
-
 }
 .movie-details{
     display: flex;

@@ -1,4 +1,7 @@
-import './style.css'
+import './style.css';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 function Card(movie) {
     console.log(movie.info);
     var img_pat = "https://image.tmdb.org/t/p/w500"
@@ -13,7 +16,9 @@ function Card(movie) {
     return (
         <>
             <div className="movie" onClick={ViewPage}>
-                <img src={img_pat+movie.info.poster_path} alt="imge" className="poster"></img>
+            <LazyLoadImage
+                effect="blur"
+             src={img_pat+movie.info.poster_path} alt="imge" className="poster"/>
                 <div className="movie_details">
                     <div className="box">
                         <h4 className="title">{movie.info.title}</h4>
