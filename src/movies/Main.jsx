@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./style.css";
 import Card from "./Card";
 import Pagination from "./pagination";
+import { Modal } from "@material-ui/core";
 
 var API_key = "&api_key=7c01b82b0aa395aad5febf7f163923a8";
 var base_URL = "https://api.themoviedb.org/3";
@@ -14,18 +15,15 @@ function Main() {
     const [movieData, setMovieData] = useState([]);
     const [url_set, setURL] = useState(url);
     const [search, setSearch] = useState();
-    // const [count, setCount] = useState(1);
 
-    const [curPage, setCurPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(12);
-
-    const lastPostIndex = curPage * postsPerPage;
-    const firstPostIndex = lastPostIndex - postsPerPage;
-    const currentPosts = movieData.slice(firstPostIndex, lastPostIndex);
-
-
-    // const Prev = () => setCount(count => count - 1)
-    // const Next = () => setCount(count => count + 1)
+    const showperPage = 10;
+    const [pagination, setPagination] = useState({
+        start:0,
+        end:showperPage
+    })
+    const onPaginationChange = (start,end) => {
+        setPagination({start:start, end:end})
+    }
 
     useEffect(() => {
         // event.preventDefault()
@@ -78,26 +76,20 @@ function Main() {
             </div>
             <div className="container">
                 {
-                    (currentPosts.length === 0)
+                    (movieData.length === 0)
                         ? <p className="notfond">Not Found (404)</p>
-                        : currentPosts.map((res, pos) => {
+                        : movieData.slice(pagination.start, pagination.end).map((res, pos) => {
                             return (
                                 <Card info={res} key={pos} />
                             )
                         })
                 }
             </div>
+
             <Pagination
-                totalPosts={movieData.length}
-                postsPerPage={postsPerPage}
-                setCurrentPage={setCurPage}
-                curPage={curPage}
+                showperPage={showperPage} total={movieData.length}
+                onPaginationChange={onPaginationChange}
             />
-            {/* <div className="pagination">
-                <button onClick={Prev}>Prev</button>
-                {`Page ${count}`}
-                <button onClick={Next}>Next</button>
-            </div> */}
         </>
     )
 }
